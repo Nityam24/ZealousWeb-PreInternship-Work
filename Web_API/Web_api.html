@@ -1,0 +1,119 @@
+// Form API: Handles form submission and displays the input value.
+// History API: Provides buttons to navigate back and forward in the browser history.
+// Storage API: Stores and retrieves data using localStorage.
+// Worker API: Starts a web worker (you need to create a separate worker.js file for this to work).
+// Fetch API: Fetches data from a remote server and displays it.
+// Geolocation API: Retrieves and displays the user's current geographical location
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web API Examples</title>
+</head>
+<body>
+
+<h2>Web API Examples</h2>
+
+<!-- Form API -->
+<form id="exampleForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <input type="submit" value="Submit">
+</form>
+
+<p id="formOutput"></p>
+
+<!-- History API -->
+<button onclick="goBack()">Go Back</button>
+<button onclick="goForward()">Go Forward</button>
+
+<!-- Storage API -->
+<button onclick="storeData()">Store Data</button>
+<button onclick="retrieveData()">Retrieve Data</button>
+<p id="storageOutput"></p>
+
+<!-- Worker API -->
+<button onclick="startWorker()">Start Worker</button>
+<p id="workerOutput"></p>
+
+<!-- Fetch API -->
+<button onclick="fetchData()">Fetch Data</button>
+<p id="fetchOutput"></p>
+
+<!-- Geolocation API -->
+<button onclick="getLocation()">Get Location</button>
+<p id="locationOutput"></p>
+
+<script>
+// Form API
+document.getElementById('exampleForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    document.getElementById('formOutput').innerText = `Hello, ${name}!`;
+});
+
+// History API
+function goBack() {
+    window.history.back();
+}
+
+function goForward() {
+    window.history.forward();
+}
+
+// Storage API
+function storeData() {
+    localStorage.setItem('name', 'John Doe');
+    document.getElementById('storageOutput').innerText = 'Data stored!';
+}
+
+function retrieveData() {
+    const name = localStorage.getItem('name');
+    document.getElementById('storageOutput').innerText = `Stored name: ${name}`;
+}
+
+// Worker API
+let worker;
+function startWorker() {
+    if (typeof(Worker) !== "undefined") {
+        if (typeof(worker) == "undefined") {
+            worker = new Worker("worker.js");
+        }
+        worker.onmessage = function(event) {
+            document.getElementById('workerOutput').innerText = event.data;
+        };
+    } else {
+        document.getElementById('workerOutput').innerText = "Sorry, your browser does not support Web Workers...";
+    }
+}
+
+// Fetch API
+function fetchData() {
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('fetchOutput').innerText = JSON.stringify(data);
+        })
+        .catch(error => {
+            document.getElementById('fetchOutput').innerText = 'Error fetching data';
+        });
+}
+
+// Geolocation API
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        document.getElementById('locationOutput').innerText = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    document.getElementById('locationOutput').innerText = 
+        "Latitude: " + position.coords.latitude + 
+        ", Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>
