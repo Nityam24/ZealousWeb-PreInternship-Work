@@ -16,4 +16,64 @@ document.getElementById("demo").innerHTML =
 </body>
 </html>
 
+{% comment %} The Browser Object Model (BOM) {% endcomment %}
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript BOM Examples</h2>
+
+<p id="screen"></p>
+<p id="location"></p>
+<p id="history"></p>
+<p id="navigator"></p>
+<p id="cookies"></p>
+
+<script>
+// Screen
+document.getElementById("screen").innerHTML =
+"Screen width: " + screen.width + "px<br>" +
+"Screen height: " + screen.height + "px<br>" +
+"Available screen width: " + screen.availWidth + "px<br>" +
+"Available screen height: " + screen.availHeight + "px";
+
+// Location
+document.getElementById("location").innerHTML =
+"Page URL: " + window.location.href + "<br>" +
+"Host: " + window.location.host + "<br>" +
+"Pathname: " + window.location.pathname + "<br>" +
+"Protocol: " + window.location.protocol;
+
+// History
+document.getElementById("history").innerHTML =
+"History length: " + window.history.length;
+
+// Navigator
+document.getElementById("navigator").innerHTML =
+"Browser CodeName: " + navigator.appCodeName + "<br>" +
+"Browser Name: " + navigator.appName + "<br>" +
+"Browser Version: " + navigator.appVersion + "<br>" +
+"Cookies Enabled: " + navigator.cookieEnabled + "<br>" +
+"Platform: " + navigator.platform + "<br>" +
+"User-agent header: " + navigator.userAgent;
+
+// Popup Alert
+function showAlert() {
+    alert("This is a popup alert!");
+}
+showAlert();
+
+// Timing
+setTimeout(function() {
+    alert("This alert is shown after 3 seconds!");
+}, 3000);
+
+// Cookies
+document.cookie = "username=John Doe";
+document.getElementById("cookies").innerHTML = "Cookies: " + document.cookie;
+</script>
+
+</body>
+</html>
+
 
