@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 80%;
+    height: 80%;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(245, 4, 4, 0.1);
+}
+
+h1 {
+    margin-bottom: 100px;
+    font-size: 5rem;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stop-button{
+    background-color: #dc3545;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.stop-button:hover{
+    background-color: #fd041d;
+}
+
+#countdown-box {
+    margin: 20px 0;
+    font-size: 2rem;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: scale(0);
+}
+
+#countdown-box.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spacing between countdown sections */
+    font-size: 2rem;
+}
+
+.countdown-section {
+    text-align: center;
+    min-width: 50px;
+}
+
+.countdown-section span {
+    display: block;
+    font-size: 3rem; /* Adjust the font size of numbers */
+}
+
+#labels {
+    margin-top: 10px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Spacing between labels */
+}
+
+#completion-message {
+    font-size: 1.5rem;
+    color: red;
+    margin-top: 20px;
+}
+
+#stop-btn,
+#reset-btn {
+    display: none;
+}

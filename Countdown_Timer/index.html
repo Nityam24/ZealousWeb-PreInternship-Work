@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Countdown Timer</h1>
+        <input type="datetime-local" id="datetime-picker" required>
+        <button id="start-btn" onclick="startCountdown()">Start Timer</button>
+        <button id="stop-btn" onclick="stopCountdown()" class="stop-button">Stop Timer</button>
+        <button id="reset-btn" onclick="resetCountdown()">Reset Timer</button>
+        
+        <div id="countdown-box" class="hidden">
+            <div id="countdown">
+                <div class="countdown-section">
+                    <span id="days">00</span>
+                    <span>Days</span>
+                </div>
+                <div class="countdown-section">
+                    <span id="hours">00</span>
+                    <span>Hours</span>
+                </div>
+                <div class="countdown-section">
+                    <span id="minutes">00</span>
+                    <span>Minutes</span>
+                </div>
+                <div class="countdown-section">
+                    <span id="seconds">00</span>
+                    <span>Seconds</span>
+                </div>
+            </div>
+            <div id="completion-message"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
