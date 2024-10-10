@@ -73,7 +73,7 @@ button:hover {
 #countdown {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Spacing between countdown sections */
+    gap: 20px; 
     font-size: 2rem;
 }
 
@@ -84,7 +84,7 @@ button:hover {
 
 .countdown-section span {
     display: block;
-    font-size: 3rem; /* Adjust the font size of numbers */
+    font-size: 3rem; 
 }
 
 #labels {
@@ -92,7 +92,7 @@ button:hover {
     font-size: 1rem;
     display: flex;
     justify-content: center;
-    gap: 50px; /* Spacing between labels */
+    gap: 50px;
 }
 
 #completion-message {
