@@ -6,7 +6,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     let age = document.getElementById("age").value;
     let gender = document.getElementById("gender").value;
   
-    // Clear previous error messages
+    
     document.getElementById("nameError").textContent = "";
     document.getElementById("emailError").textContent = "";
     document.getElementById("ageError").textContent = "";
@@ -15,13 +15,11 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
   
     let valid = true;
   
-    // Name validation
     if (name === "") {
       document.getElementById("nameError").textContent = "Name is required.";
       valid = false;
     }
   
-    // Email validation
     let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (email === "") {
       document.getElementById("emailError").textContent = "Email is required.";
@@ -31,7 +29,6 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
       valid = false;
     }
   
-    // Age validation
     if (age === "") {
       document.getElementById("ageError").textContent = "Age is required.";
       valid = false;
@@ -40,13 +37,11 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
       valid = false;
     }
   
-    // Gender validation
     if (gender === "") {
       document.getElementById("genderError").textContent = "Please select a gender.";
       valid = false;
     }
   
-    // If all fields are valid, save to localStorage
     if (valid) {
       let formData = {
         name: name,
@@ -57,7 +52,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
   
       localStorage.setItem("formData", JSON.stringify(formData));
       document.getElementById("successMessage").textContent = "Form submitted successfully!";
-      document.getElementById("myForm").reset(); // Clear the form
+      document.getElementById("myForm").reset(); 
     }
   });
   
