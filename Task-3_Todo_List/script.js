@@ -54,7 +54,7 @@ function addTask() {
         completed: false
     };
 
-    saveTaskToLocalStorage(task);
+    saveTask(task);
 
     displayTask(task);
 
@@ -84,7 +84,7 @@ function displayTask(task) {
         showConfirm("Are you sure you want to mark this task as complete?", (confirmed) => {
             if (confirmed) {
                 task.completed = true;
-                updateTaskInLocalStorage(task);
+                updateTask(task);
                 li.classList.add('complete');
                 li.classList.remove('overdue');
             }
@@ -94,7 +94,7 @@ function displayTask(task) {
     li.querySelector('.delete-btn').addEventListener('click', () => {
         showConfirm("Are you sure you want to delete this task?", (confirmed) => {
             if (confirmed) {
-                deleteTaskFromLocalStorage(task);
+                deleteTask(task);
                 li.remove();
             }
         });
@@ -103,7 +103,7 @@ function displayTask(task) {
     taskList.appendChild(li);
 }
 
-function saveTaskToLocalStorage(task) {
+function saveTask(task) {
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -114,13 +114,13 @@ function loadTasks() {
     tasks.forEach(task => displayTask(task));
 }
 
-function updateTaskInLocalStorage(updatedTask) {
+function updateTask(updatedTask) {
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks = tasks.map(task => task.text === updatedTask.text ? updatedTask : task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-function deleteTaskFromLocalStorage(taskToDelete) {
+function deleteTask(taskToDelete) {
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks = tasks.filter(task => task.text !== taskToDelete.text);
     localStorage.setItem('tasks', JSON.stringify(tasks));
